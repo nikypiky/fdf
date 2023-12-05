@@ -1,5 +1,5 @@
 Library     = fdf
-files       = file1 file2 file3  # Add your source files here
+files       = fdf
 Compiler    = cc
 CmpFlags    = -Wall -Wextra -Werror
 MinilibX    = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
@@ -13,7 +13,7 @@ $(NAME): $(OFILES)
 	@ar -rc $(NAME) $(OFILES)
 
 %.o: %.c
-	@$(Compiler) $(CmpFlags) -c $< -I./ -g3 -D $(BUFFER) -g
+	@$(Compiler) $(CmpFlags) -c $< -I./ -I/usr/include -Imlx_linux -O3 -g3 -o $@
 
 clean:
 	@rm -f *.o
@@ -24,7 +24,7 @@ fclean: clean
 re: fclean all
 
 run: $(NAME)
-	@$(Compiler) $(CmpFlags) -c main.c -o main.o -I./ -g3 -D $(BUFFER) -g
+	@$(Compiler) $(CmpFlags) -c main.c -o main.o -I./ -g3 -g
 	@$(Compiler) $(CmpFlags) -o main main.o -L. $(NAME) $(MinilibX) -g
 	@./main
 	@echo
