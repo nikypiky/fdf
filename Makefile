@@ -1,5 +1,6 @@
 Library     = fdf
-files       = fdf
+files       = 	fdf \
+				join_points.c \
 Compiler    = cc
 CmpFlags    = -Wall -Wextra -Werror
 MinilibX    = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
