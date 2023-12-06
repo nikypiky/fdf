@@ -1,20 +1,35 @@
 #include <stdio.h>
 
-void    join_points(int ax, int ay, int bx, int by)
+void    join_points(int Ax, int Ay, int Bx, int By)
 {
-	float	vx;
-	float	vy;
+	float	Vx;
+	float	Vy;
+	/* float	Nx; */
+	/* float	Ny; */
+	/* float	move_x; */
+	/* float	move_y; */
 
-	vx = (float)(ax - bx) / (ay - by);
-	vy = (float)(ay - by) / (ax - bx);
+	/* Nx = Bx; */
+	/* Ny = By; */
 
-	while (ax != bx && ay != by)
+	Vx = 0;
+	Vy = 0;
+	while (Bx != Ax && By != Ay)
 	{
-		if (ax != bx)
-			bx = (float)bx + vx;
-		if (ay != by)
-			by = (float)by + vy;
-		printf("ax = %i, ay = %i\n", ax, ay);
+		Vx += (float)(Ax - Bx) / (Ay - By);
+		Vy += (float)(Ay - By) / (Ax - Bx);
+		while (Vx > 1)
+		{
+			Bx++;
+			Vx--;
+			printf("Bx = %i\n", Bx);
+		}
+		while (Vy > 1)
+		{
+			By++;
+			Vy--;
+			printf("By = %i\n", By);
+
+		}
 	}
 }
-

@@ -1,5 +1,5 @@
 CC := cc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -g3
 LDFLAGS := -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 TARGET := fdf.a
@@ -18,7 +18,7 @@ $(TARGET): $(OBJECTS)
 
 run: $(TARGET)
 	@$(CC) $(CFLAGS) -c main.c -o main.o
-	@$(CC) -o main main.o -L. $(TARGET) $(LDFLAGS)
+	@$(CC) -o main main.o -L. $(TARGET) $(LDFLAGS) -g3
 	@./main
 	@echo
 
