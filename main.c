@@ -20,4 +20,5 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 int main(void)
 {
 	join_points(9, 12, 5, -2);
+	
 }
