@@ -17,7 +17,16 @@
 # include <unistd.h>
 # include <stdio.h>
 
-void    join_points(int ax, int ay, int bx, int by);
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int	bits_per_pixel;
+	int	line_length;
+	int	endian;
+}t_data;
+
+void	join_points(void *mlx_ptr, void *win_ptr, int ax, int ay, int bx, int by);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 
 #endif
