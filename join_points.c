@@ -75,3 +75,30 @@ void	bresenhams_minus(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int 
 		}
 	}
 }
+
+void	bresenhams_y_minus(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2)
+{
+	int	dx;
+	int	dy;
+	int	parameter;
+
+	dx = x2 - x1;
+	dy = y2 - y1;
+	if (dx < 0)
+		dx *= -1;
+	if (dy < 0)
+		dy *= -1;
+	parameter = 2 * dx - dy;
+	while (y1 >= y2)
+	{
+		mlx_pixel_put(mlx_ptr, win_ptr, x1, y1, 0xff0000);
+		y1--;
+		if (parameter < 0)
+			parameter += 2 * dx;
+		else
+		{
+			parameter += 2 * (dx - dy);
+			x1++;
+		}
+	}
+}
