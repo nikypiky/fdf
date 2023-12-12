@@ -1,6 +1,12 @@
+#include <bits/types/cookie_io_functions_t.h>
 #include <stdio.h>
 #include "mlx_linux/fdf.h"
 #include "mlx_linux/mlx.h"
+
+void	join_points(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);
+{
+	if ()
+}
 
 void	bresenhams(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2)
 {
@@ -61,10 +67,9 @@ void	bresenhams_minus(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int 
 	if (dy < 0)
 		dy *= -1;
 	parameter = 2 * dy - dx;
-
 	while (x1 <= x2)
 	{
-		mlx_pixel_put(mlx_ptr, win_ptr, x1, y1, 0xff0000);
+		mlx_pixel_put(mlx_ptr, win_ptr, x1, y1, 0xff00ff);
 		x1++;
 		if (parameter < 0)
 			parameter += 2 * dy;
@@ -91,7 +96,7 @@ void	bresenhams_y_minus(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, in
 	parameter = 2 * dx - dy;
 	while (y1 >= y2)
 	{
-		mlx_pixel_put(mlx_ptr, win_ptr, x1, y1, 0xff0000);
+		mlx_pixel_put(mlx_ptr, win_ptr, x1, y1, 0x0000ff);
 		y1--;
 		if (parameter < 0)
 			parameter += 2 * dx;

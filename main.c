@@ -17,8 +17,8 @@ int	main(void)
 	void	*mlx_win;
 	int x1 = 500;
 	int y1 = 500;
-	int x2 = 600;
-	int y2 = 150;
+	int x2 = 820;
+	int y2 = 950;
 	// t_data	img;
 
 	mlx = mlx_init();
@@ -27,7 +27,11 @@ int	main(void)
 	mlx_pixel_put(mlx, mlx_win, x2, y2, 0x0000ff);
 
 	// join_points(mlx, mlx_win, x1, y1, x2, y2);
-	/* bresenhams_y(mlx, mlx_win, x1, y1, x2, y2); */
+	bresenhams(mlx, mlx_win, x1, y1, x2, y2);
+	bresenhams_minus(mlx, mlx_win, x1, y1, x2, y2);
+	bresenhams_y(mlx, mlx_win, x1, y1, x2, y2);
 	bresenhams_y_minus(mlx, mlx_win, x1, y1, x2, y2);
+
+
 	mlx_loop(mlx);
 }
