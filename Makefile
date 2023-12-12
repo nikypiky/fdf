@@ -22,6 +22,12 @@ run: $(TARGET)
 	@./main
 	@echo
 
+test: $(TARGET)
+	$(CC) -c test.c -o test.o -g3
+	$(CC) -o test test.o -L. $(TARGET) $(LDFLAGS) -g3
+	# ./test
+	echo
+
 clean:
 	@rm -f $(OBJECTS)
 

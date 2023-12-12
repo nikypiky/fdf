@@ -15,18 +15,18 @@ int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
+	int x1 = 100;
+	int y1 = 100;
+	int x2 = 200;
+	int y2 = 1000;
 	// t_data	img;
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_pixel_put(mlx, mlx_win, 0, 0, 0x00ff00);
-	mlx_pixel_put(mlx, mlx_win, 100, 3000, 0x00ff00);
+	mlx_pixel_put(mlx, mlx_win, x1, y1, 0x00ff00);
+	mlx_pixel_put(mlx, mlx_win, x2, y2, 0x00ff00);
 
-	// img.img = mlx_new_image(mlx, 1920, 1080);
-	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-	// 							&img.endian);
-	// my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	join_points(mlx, mlx_win, 0, 0, 5, 5);
-	// mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	// join_points(mlx, mlx_win, x1, y1, x2, y2);
+	bresenhams(mlx, mlx_win, x1, y1, x2, y2);
 	mlx_loop(mlx);
 }
