@@ -15,16 +15,16 @@ int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
-	int x1 = 100;
-	int y1 = 200;
-	int x2 = 200;
-	int y2 = 100;
+	int x1 = 500;
+	int y1 = 500;
+	int x2 = 600;
+	int y2 = 450;
 	// t_data	img;
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
 	mlx_pixel_put(mlx, mlx_win, x1, y1, 0x00ff00);
-	mlx_pixel_put(mlx, mlx_win, x2, y2, 0x00ff00);
+	mlx_pixel_put(mlx, mlx_win, x2, y2, 0x0000ff);
 
 	// join_points(mlx, mlx_win, x1, y1, x2, y2);
 	/* bresenhams_y(mlx, mlx_win, x1, y1, x2, y2); */
