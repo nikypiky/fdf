@@ -1,4 +1,3 @@
-/* #include <bits/types/cookie_io_functions_t.h> */
 #include <stdio.h>
 #include "mlx_linux/fdf.h"
 #include "mlx_linux/mlx.h"
