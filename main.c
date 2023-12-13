@@ -28,22 +28,23 @@ int	main(void)
 
 	while (x2 < 750)
 	{
-		x2 += 25;
 		join_points(mlx, mlx_win, x1, y1, x2, y2);
+		x2++;
 	}
+	join_points(mlx, mlx_win, x1, y1, x2, y2);
 	while (y2 < 750)
 	{
-		y2 += 25;
+		y2++;
 		join_points(mlx, mlx_win, x1, y1, x2, y2);
 	}
 	while (x2 > 250)
 	{
-		x2 -= 250;
+		x2--;
 		join_points(mlx, mlx_win, x1, y1, x2, y2);
 	}
 	while (y2 > 250)
 	{
-		y2 -= 250;
+		y2--;
 		join_points(mlx, mlx_win, x1, y1, x2, y2);
 	}
 	mlx_loop(mlx);

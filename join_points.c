@@ -8,9 +8,11 @@ void	join_points(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2)
 	float	slope;
 
 	slope = (float)(y2 - y1) / (x2 - x1);
+	if (x2 - x1 == 0)
+		slope = 2;
 	if (x1 < x2 && slope >= 0 && slope <= 1)
 		bresenhams(mlx_ptr, win_ptr, x1, y1, x2, y2);
-	if (x1 <= x2 && slope > 1)
+	if (x1 <= x2 && slope >= 1)
 		bresenhams_y(mlx_ptr, win_ptr, x1, y1, x2, y2);
 	if (x1 < x2 && slope <= 0 && slope >= -1)
 		bresenhams_minus(mlx_ptr, win_ptr, x1, y1, x2, y2);
@@ -18,11 +20,11 @@ void	join_points(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2)
 		bresenhams_y_minus(mlx_ptr, win_ptr, x1, y1, x2, y2);
 	if (x1 > x2 && slope >= 0 && slope < 1)
 		bresenhams(mlx_ptr, win_ptr, x2, y2, x1, y1);
-	if (x1 >= x2 && slope > 1)
+	if (x1 >= x2 && slope >= 1)
 		bresenhams_y(mlx_ptr, win_ptr, x2, y2, x1, y1);
-	if (x1 > x2 && slope < 0 && slope > -1)
+	if (x1 > x2 && slope < 0 && slope >= -1)
 		bresenhams_minus(mlx_ptr, win_ptr, x2, y2, x1, y1);
-	if (x1 > x2 && slope < -1)
+	if (x1 > x2 && slope <= -1)
 		bresenhams_y_minus(mlx_ptr, win_ptr, x2, y2, x1, y1);
 }
 
