@@ -33,6 +33,12 @@ typedef struct Point {
 	int	screen_y;
 } point;
 
+typedef struct Plane {
+	point	viewer;
+	point	plane;
+	int		vector[3];
+} screen;
+
 void	join_points(void *mlx_ptr, void *win_ptr, int ax, int ay, int bx, int by);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	bresenhams(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);
