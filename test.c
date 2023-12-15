@@ -1,81 +1,58 @@
-
-#include <stdio.h>
 #include "mlx_linux/fdf.h"
 #include "mlx_linux/mlx.h"
 
-int	get_direction(int point_a, int point_b)
+float	intersection_x(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4)
 {
-	if (point_a < point_b)
-		return (-1);
-	else
-		return (1);
+	float	x;
+
+	x =  ((float)(x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4));
+	x = x / ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
+	return (x);
 }
 
-float	get_move_len(int Ax, int Ay, int Bx, int By)
+float intersection_y(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4)
 {
-	float	i;
+	float	y;
 
-	i = (float)(Ax - Bx) / (Ay - By);
-	if (i < 0)
-		return (-i);
-	return (i);
+	y = 1 * ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4));
+	y = y / ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
+	return (y);
 }
 
-void    points(int Ax, int Ay, int Bx, int By)
+float	intercept(float x1, float y1, float x2, float y2)
 {
-	float	Vx;
-	float	Vy;
+	float	x;
+	float	b;
+	float	m;
 
-	Vx = 0;
-	Vy = 0;
-	while (Bx != Ax || By != Ay)
-	{
-		Vx += get_move_len(Ax, Ay, Bx, By);
-		Vy += get_move_len(Ay, Ax, By, Bx);
-		while (Vx > 1)
-		{
-			Bx += get_direction(Ax, Bx);
-			Vx--;
-			printf("Bx = %i ", Bx);
-		}
-		/* printf("\n"); */
-		while (Vy > 1)
-		{
-			By += get_direction(Ay, By);
-			Vy--;
-			printf("By = %i ", By);
-		}
-		printf("\n");
-	}
+	m = (float)(y2 - y1) / (x2 - x1);
+	b = y1 - m * x1;
+	x = (300 - b) / m;
+	return (x);
 }
 
-void	test_besenhams(int x1, int y1, int x2, int y2)
+void	plane_intersect(point *A, point *B)
 {
-	int	x;
-	int	y;
-	int	decision_parameter;
-	int	slope_error;
+	int	vector_AB[3];
 
-	decision_parameter = 2 * (y2 - y1);
-	slope_error = decision_parameter - (x2 - x1);
-	x = x1;
-	y = y1;
-	while (x != x2)
-	{
-		printf("x = %i y = %i\n", x, y);
-		slope_error += decision_parameter;
-	    if (slope_error >= 0)
-		{
-            y++;
-            slope_error -= 2 * (x2 - x1);
-        }
-		x++;
-	}
+	vector_AB[0] = B->x - A->x;
+	vector_AB[1] = B->y - A->y;
+	vector_AB[2] = B->z - A->z;
+	A->screen_x = A->x + vector_AB[0] * 5 / 8;
+	A->screen_y = A->z + vector_AB[2] * 5 / 8;
 }
 
-int	main(void)
+int main(void)
 {
-	test_besenhams(3, 2, 15, 5);
-	test_besenhams(10, 12, 8, 1);
-	points(15, 5, 3, 2);
+	point	A;
+	point	B;
+
+	A.x = 400;
+	A.y = 300;
+	A.z = 100;
+	B.x = 1000;
+	B.y = 0;
+	B.z = 1000;
+	plane_intersect(&A, &B);
+	printf("x = %i, y = %i\n", A.screen_x, A.screen_y);
 }

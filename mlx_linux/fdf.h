@@ -25,6 +25,14 @@ typedef struct	s_data {
 	int	endian;
 }t_data;
 
+typedef struct Point {
+	int	x;
+	int	y;
+	int	z;
+	int	screen_x;
+	int	screen_y;
+} point;
+
 void	join_points(void *mlx_ptr, void *win_ptr, int ax, int ay, int bx, int by);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	bresenhams(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);

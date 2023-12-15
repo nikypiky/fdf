@@ -6,7 +6,7 @@ TARGET := fdf.a
 SOURCES := main.c join_points.c
 OBJECTS := $(SOURCES:.c=.o)
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re run test
 
 all: $(TARGET) run
 
@@ -23,10 +23,10 @@ run: $(TARGET)
 	@echo
 
 test: $(TARGET)
-	$(CC) -c test.c -o test.o -g3
-	$(CC) -o test test.o -L. $(TARGET) $(LDFLAGS) -g3
-	# ./test
-	echo
+	@$(CC) -c test.c -o test.o -g3
+	@$(CC) -o test test.o -L. $(TARGET) $(LDFLAGS) -g3
+	@ ./test
+	@echo
 
 clean:
 	@rm -f $(OBJECTS)
