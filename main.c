@@ -11,17 +11,23 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+int key_press(int keycode, void *param)
+{
+    printf("Key pressed! Keycode: %d\n", keycode);
+    return 0;
+}
+
 int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_win = mlx_new_window(mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Hello world!");
 
 	screen	screen;
 	point	plane;
 	point	viewer;
-	plane.x = 100;
+	plane.x = 2058;
 	plane.y = 0;
 	plane.z = 0;
 	viewer.x = 0;
@@ -31,5 +37,6 @@ int	main(void)
 	screen.viewer = viewer;
 	get_screen_vector(&screen);
 	join_points(mlx, mlx_win, 100, 100, 1000, 743);
+	mlx_key_hook(mlx_win, key_press, 0);
 	mlx_loop(mlx);
 }

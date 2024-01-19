@@ -19,6 +19,10 @@
 
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 1080
+# define UP_KEY 65362
+# define DOWN_KEY 65364
+# define RIGHT_KEY 65363
+# define LEFT_KEY 65361
 
 typedef struct	s_data {
 	void	*img;
