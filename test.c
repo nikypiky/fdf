@@ -31,7 +31,7 @@ float	intercept(float x1, float y1, float x2, float y2)
 	return (x);
 }
 
-void	plane_intersect(point *A, point *B)
+void	plane_intersect(point *A, point *B, screen screen)
 {
 	int	vector_AB[3];
 
@@ -46,6 +46,7 @@ int main(void)
 {
 	point	A;
 	point	B;
+	screen	screen;
 
 	A.x = 400;
 	A.y = 300;

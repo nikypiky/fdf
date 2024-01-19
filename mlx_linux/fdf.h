@@ -17,6 +17,9 @@
 # include <unistd.h>
 # include <stdio.h>
 
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 1080
+
 typedef struct	s_data {
 	void	*img;
 	char	*addr;
@@ -45,6 +48,6 @@ void	bresenhams(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);
 void	bresenhams_y(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);
 void	bresenhams_minus(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);
 void	bresenhams_y_minus(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);
-
+void	get_screen_vector(screen *screen);
 
 #endif
