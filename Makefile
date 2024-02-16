@@ -16,7 +16,7 @@ $(TARGET): $(OBJECTS)
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-run: $(TARGET)
+run: $(TARGET) $(SOURCES) $(OBJECTS)
 	@$(CC) $(CFLAGS) -c main.c -o main.o
 	@$(CC) -o main main.o -L. $(TARGET) $(LDFLAGS) -g3
 	@./main

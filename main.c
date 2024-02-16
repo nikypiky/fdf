@@ -17,10 +17,23 @@ int key_press(int keycode, void *param)
     return 0;
 }
 
+int	move_point(int keycode, void *param)
+{
+	int*	point = (int *)param;
+
+	if (keycode == UP_KEY)
+	{
+		point[0] += 50;
+		printf("%i\n", point[0]);
+	}
+	return (0);
+}
 int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
+	int	a[] = {400, 500};
+	int	b[] = {1000, 1000};
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Hello world!");
 
@@ -36,7 +49,7 @@ int	main(void)
 	screen.plane = plane;
 	screen.viewer = viewer;
 	get_screen_vector(&screen);
-	join_points(mlx, mlx_win, 100, 100, 1000, 743);
-	mlx_key_hook(mlx_win, key_press, 0);
+	mlx_key_hook(mlx_win, move_point, &a);
+	join_points(mlx, mlx_win, a[0], a[1], b[0], b[1]);
 	mlx_loop(mlx);
 }
