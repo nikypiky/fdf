@@ -1,0 +1,10 @@
+#+TITLE: FDF Notes
+
+* TODO
+**  screen
+*** distance of points in plane
++ distance of viewer from plane
++ location of points on plane/define plane
+*** movement
+**** rotation
+**** forward-backward
