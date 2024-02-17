@@ -11,6 +11,7 @@ typedef struct s_data
 {
 	void *mlx_ptr;
 	void *win_ptr;
+	int	i;
 } t_data;
 
 int on_destroy(t_data *data)
@@ -25,14 +26,13 @@ int on_destroy(t_data *data)
 int on_keypress(int keysym, t_data *data)
 {
 	(void)data;
-	static int	i = 0;
 
 	/* i = 0; */
 	if (keysym == 65362)
-		i++;
+		data->i++;
 	if (keysym == 65364)
-		i--;
-	printf("Pressed key: %d\n", i);
+		data->i--;
+	printf("Pressed keyx: %d\n", data->i);
 	return (0);
 }
 
@@ -46,9 +46,10 @@ int main(void)
 	data.win_ptr = mlx_new_window(data.mlx_ptr, 600, 400, "hi :)");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
+	data.i = 0;
 
 	// Register key release hook
-	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
+	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &on_keypress, &data);
 
 	// Register destroy hook
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
