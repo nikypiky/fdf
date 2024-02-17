@@ -30,6 +30,8 @@ int on_keypress(int keysym, t_data *data)
 	if (keysym == 65364)
 		data->i--;
 	printf("Pressed keyx: %d\n", data->i);
+	mlx_clear_window(data->mlx_ptr, data->win_ptr);
+	mlx_pixel_put(data->mlx_ptr, data->win_ptr, data->i, 100, 16711680);
 	return (0);
 }
 
