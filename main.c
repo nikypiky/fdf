@@ -17,26 +17,29 @@ int key_press(int keycode, void *param)
     return 0;
 }
 
+
+int on_keypress(int keysym, int *data)
+{
+/* i = 0; */
+	if (keysym == 65362)
+		data++;
+	if (keysym == 65364)
+		data--;
+	printf("Pressed keyx: %d\n", *data);
+	return (0);
+}
+
 int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
+	int	data;
+
+	data = 100;
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Hello world!");
 
-	screen	screen;
-	point	plane;
-	point	viewer;
-	plane.x = 2058;
-	plane.y = 0;
-	plane.z = 0;
-	viewer.x = 0;
-	viewer.y = 0;
-	viewer.z = 0;
-	screen.plane = plane;
-	screen.viewer = viewer;
-	get_screen_vector(&screen);
-	join_points(mlx, mlx_win, 100, 100, 1000, 743);
+	mlx_hook(mlx_win, KeyPress, KeyPressMask, &on_keypress, &data);
 	mlx_key_hook(mlx_win, key_press, 0);
 	mlx_loop(mlx);
 }
