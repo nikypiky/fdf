@@ -47,11 +47,7 @@ typedef struct Plane {
 } screen;
 
 void	join_points(void *mlx_ptr, void *win_ptr, int ax, int ay, int bx, int by);
-/* void	my_mlx_pixel_put(t_data *data, int x, int y, int color); */
-void	bresenhams(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);
-void	bresenhams_y(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);
-void	bresenhams_minus(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);
-void	bresenhams_y_minus(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	get_screen_vector(screen *screen);
 
 #endif
