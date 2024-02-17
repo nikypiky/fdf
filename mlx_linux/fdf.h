@@ -5,14 +5,16 @@
 # define DOWN_KEY 65364
 # define RIGHT_KEY 65363
 # define LEFT_KEY 65361
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 1080
 
-/* typedef struct	s_data {
-/* 	void	*img; */
-/* 	char	*addr; */
-/* 	int	bits_per_pixel; */
-/* 	int	line_length; */
-/* 	int	endian; */
-/* }t_data; */
+typedef struct	image_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	image_data;
 
 typedef struct Point {
 	int	x;
